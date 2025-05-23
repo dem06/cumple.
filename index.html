@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: black;
+      background: #000000;
       color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
@@ -80,6 +80,38 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .easter-button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .easter-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hidden-message {
+      margin-top: 15px;
+      font-size: 1rem;
+      display: none;
+      opacity: 0;
+      transition: opacity 1s;
+      background: linear-gradient(45deg, #ffffff, #aaaaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hidden-message.visible {
+      display: block;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -87,9 +119,13 @@
   <div class="content">
     <h1>Hola, Nu ✨</h1>
     <p>
-      Sabía que ibas a entrar, quise a hacer algo distinto y recordarte que Marq Marquez > Max Verstappen ​🤫​.<br />
+      Sabía que ibas a entrar, quise a hacer algo distinto y recordarte que Marq Marquez > Max Verstappen ​🤫<br />
       Feliz cumple de nuevo 😌
     </p>
+    <button class="easter-button" onclick="revealMessage()">¿Y si tocás acá?</button>
+    <div id="hiddenMsg" class="hidden-message">
+      ¿En serio tocaste esto? Bueno, ahora sabés que las matemáticas todavía me parecen mejores que los libros. Punto final 😌
+    </div>
   </div>
 
   <script>
@@ -103,6 +139,11 @@
       star.style.left = Math.random() * 100 + '%';
       star.style.animationDuration = 1 + Math.random() * 2 + 's';
       starsContainer.appendChild(star);
+    }
+
+    function revealMessage() {
+      const msg = document.getElementById('hiddenMsg');
+      msg.classList.add('visible');
     }
   </script>
 </body>
